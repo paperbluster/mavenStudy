@@ -1,10 +1,12 @@
-package com.example.spring.service;
+package spring.service;
 
 
-import com.example.spring.wrapper.UserMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import spring.wrapper.UserMapper;
+
 
 /**
  * @author wanjun
@@ -13,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class UserService {
 
-    @Autowired
     private UserMapper userMapper;
 
     @Transactional

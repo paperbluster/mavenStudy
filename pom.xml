@@ -12,6 +12,7 @@
         <module>hello</module>
         <module>mavenWeb</module>
         <module>spring</module>
+        <module>springXml</module>
     </modules>
 
     <properties>

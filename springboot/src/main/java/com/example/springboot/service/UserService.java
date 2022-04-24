@@ -18,6 +18,6 @@ public class UserService {
     @Transactional
     public void Test(){
         userMapper.insertOne();
-        throw new NullPointerException();
+        //throw new NullPointerException();
     }
 }
