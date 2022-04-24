@@ -15,6 +15,8 @@ public class SpringbootApplication {
         ConfigurableApplicationContext context= SpringApplication.run(SpringbootApplication.class, args);
         UserService userService=context.getBean(UserService.class);
         userService.Test();
+        System.out.print("result:"+userService.Find());
+        System.out.print("result:"+userService.FindMore());
     }
 
 }

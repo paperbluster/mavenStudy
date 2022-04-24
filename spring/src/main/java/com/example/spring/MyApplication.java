@@ -12,6 +12,7 @@ public class MyApplication {
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService=context.getBean(UserService.class);
         userService.Test();
+        System.out.print("result:"+userService.Find());
     }
 
 }
