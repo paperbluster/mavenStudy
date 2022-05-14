@@ -18,7 +18,7 @@ import java.util.concurrent.FutureTask;
 public class testThreadPoolTaskExecutor {
 
     //如果bean没有命名则默认方法名字，有命名取命名
-    @Qualifier("taskExector")
+    @Qualifier("jokeThread")
     @Autowired
     ThreadPoolTaskExecutor executor;
 
@@ -38,10 +38,10 @@ public class testThreadPoolTaskExecutor {
             list.add(futureTask);
             executor.submit(futureTask);
         }
-        //3.关闭线程池
-        executor.shutdown();
         for (FutureTask<Integer> futureTask : list) {
             System.out.println("result:" + futureTask.get());
         }
+        //3.关闭线程池
+        executor.shutdown();
     }
 }
