@@ -16,11 +16,13 @@ import javax.sql.DataSource;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
-/**
+/**总配置类
  * @author wanjun
  * @create 2022-04-19 11:34
  */
 @Configuration
+// 整合其他@Configuration类
+@Import(AsyncScheduledTaskConfig.class)
 // 扫包路径
 @ComponentScan("com.example.spring")
 // mybaits资源扫描
@@ -31,8 +33,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 @PropertySource("threadPool.properties")
 // 开启spring事务
 @EnableTransactionManagement
-// 整合其他@Configuration类
-@Import(AsyncScheduledTaskConfig.class)
 public class AppConfig {
     @Value("${spring.datasource.url}")
     private String url;

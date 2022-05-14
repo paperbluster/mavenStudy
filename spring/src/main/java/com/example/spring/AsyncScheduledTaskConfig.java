@@ -9,7 +9,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
-/**
+/**线程池配置类
  * @author wanjun
  * @create 2022-05-14 22:51
  */
@@ -29,7 +29,7 @@ public class AsyncScheduledTaskConfig {
     private String prefixName;
 
     @Bean("taskExector")
-    public Executor taskExector() {
+    public ThreadPoolTaskExecutor  taskExector() {
 
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         int i = Runtime.getRuntime().availableProcessors();//获取到服务器的cpu内核
