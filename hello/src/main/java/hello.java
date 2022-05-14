@@ -79,7 +79,7 @@ public class hello {
               //无返回值,runnable是没有用的
               //executor.submit(producer);
 
-              //无返回值
+              //无返回值，只能是runnable线程任务
               //executor.execute(producer);
               //有返回值,线程是继承Callable就可以
               CallableThread callableThread=new CallableThread();
