@@ -74,9 +74,12 @@ public class hello {
 
     public static void main(String[] args) {
         //2.循环创建任务对象
-          for(int i=0;i<30;i++){
+          for(int i=0;i<20;i++){
               Producer producer=new Producer("上传者"+i);
+              //有返回值,线程是继承Callable就可以
               executor.submit(producer);
+              //无返回值
+              //executor.execute(producer);
           }
         //3.关闭线程池
           executor.shutdown();
