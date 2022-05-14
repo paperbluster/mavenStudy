@@ -2,16 +2,12 @@ package com.example.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -21,6 +17,7 @@ import java.util.concurrent.FutureTask;
 @Service
 public class testThreadPoolTaskExecutor {
 
+    //如果bean没有命名则默认方法名字，有命名取命名
     @Qualifier("taskExector")
     @Autowired
     ThreadPoolTaskExecutor executor;

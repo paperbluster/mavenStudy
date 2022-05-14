@@ -29,7 +29,7 @@ public class AsyncScheduledTaskConfig {
     private String prefixName;
 
     @Bean("taskExector")
-    public ThreadPoolTaskExecutor  taskExector() {
+    public ThreadPoolTaskExecutor  threadPoolTaskExecutor() {
 
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         int i = Runtime.getRuntime().availableProcessors();//获取到服务器的cpu内核
