@@ -1,6 +1,7 @@
 package com.example.spring;
 
 import com.example.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,6 +15,7 @@ import java.util.concurrent.ExecutionException;
  */
 
 public class MyApplication {
+
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService=context.getBean(UserService.class);

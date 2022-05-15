@@ -23,7 +23,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 // 整合其他@Configuration类
 @Import(AsyncScheduledTaskConfig.class)
-// 扫包路径
+// 扫包路径,可以扫描带有@Component，@Controler、@Service、@Repository注解的类
 @ComponentScan("com.example.spring")
 // mybaits资源扫描
 @MapperScan("com.example.spring.wrapper")
