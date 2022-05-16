@@ -73,25 +73,25 @@ public class hello {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         //2.循环创建任务对象
-        List<FutureTask<Integer>> list=new ArrayList<>();
-          for(int i=0;i<20;i++){
-              //Producer producer=new Producer("上传者"+i);
-              //无返回值,runnable是没有用的
-              //executor.submit(producer);
+        List<FutureTask<Integer>> list = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            //Producer producer=new Producer("上传者"+i);
+            //无返回值,runnable是没有用的
+            //executor.submit(producer);
 
-              //无返回值，只能是runnable线程任务
-              //executor.execute(producer);
-              //有返回值,线程是继承Callable就可以
-              CallableThread callableThread=new CallableThread();
-              FutureTask<Integer> futureTask=new FutureTask<>(callableThread);
-              list.add(futureTask);
-              executor.submit(futureTask);
-          }
+            //无返回值，只能是runnable线程任务
+            //executor.execute(producer);
+            //有返回值,线程是继承Callable就可以
+            CallableThread callableThread = new CallableThread();
+            FutureTask<Integer> futureTask = new FutureTask<>(callableThread);
+            list.add(futureTask);
+            executor.submit(futureTask);
+        }
+        for (FutureTask<Integer> futureTask : list) {
+            System.out.println("result:" + futureTask.get());
+        }
         //3.关闭线程池
-          executor.shutdown();
-          for(FutureTask<Integer> futureTask:list){
-              System.out.println("result:"+futureTask.get());
-          }
+        executor.shutdown();
 //        Scanner sc=new Scanner(System.in);
 //        String str=sc.nextLine();
 //        int count=str.length()/8;
