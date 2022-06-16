@@ -47,7 +47,10 @@ public class tool {
                 if (isIdField) {
                     MyColumn myColumn = method.getAnnotation(MyColumn.class);//获取有注解标注的的方法的注解
                     String name = myColumn.name();//获取标注的字段名称
-                    method.invoke(obj, map.get(name));//执行有注解标注的方法
+                    MyEnum type=myColumn.type();//获取标注的字段的转义策略
+
+                    Object v=map.get(name);//未解析的数据
+                    method.invoke(obj, v);//执行有注解标注的方法
                 }
             }
         } catch (Exception e) {

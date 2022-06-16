@@ -18,7 +18,7 @@ public class Client {
     private String type;
     private Map<Integer,Integer> map=new HashMap<>();
 
-    @MyColumn(name = "type",type= MyEnum.string2map)
+    @MyColumn(name = "type",type= MyEnum.Object2IntIntMap)
     public Map<Integer,Integer> deparse(String sr){
         Map<Integer,Integer> map=new HashMap<>();
         if(sr.isEmpty()){
@@ -62,7 +62,7 @@ public class Client {
         return clientId;
     }
 
-    @MyColumn(name = "client_id",type= MyEnum.string2map)
+    @MyColumn(name = "client_id",type= MyEnum.Object2Integer)
     public void setClientId(int clientId) {
         this.clientId = clientId;
     }
@@ -71,7 +71,7 @@ public class Client {
         return name;
     }
 
-    @MyColumn(name = "name",type= MyEnum.string2map)
+    @MyColumn(name = "name",type= MyEnum.Object2String)
     public void setName(String name) {
         this.name = name;
     }
