@@ -23,8 +23,8 @@ public class MyApplication {
         //userService.Test();
         System.out.print("result:"+userService.Find());
         //从spring容器里取出线程池对象进行多线程操作
-        testThreadPoolTaskExecutor tt=context.getBean(testThreadPoolTaskExecutor.class);
-        tt.test();
+        //testThreadPoolTaskExecutor tt=context.getBean(testThreadPoolTaskExecutor.class);
+        //tt.test();
     }
 
 }
