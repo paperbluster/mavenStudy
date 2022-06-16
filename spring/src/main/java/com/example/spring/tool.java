@@ -45,8 +45,8 @@ public class tool {
                 method.setAccessible(true);
                 boolean isIdField = method.isAnnotationPresent(MyColumn.class);
                 if (isIdField) {
-                    MyColumn myColumn=method.getAnnotation(MyColumn.class);//获取有注解标注的的方法的注解
-                    String name= myColumn.name();//获取标注的字段名称
+                    MyColumn myColumn = method.getAnnotation(MyColumn.class);//获取有注解标注的的方法的注解
+                    String name = myColumn.name();//获取标注的字段名称
                     method.invoke(obj, map.get(name));//执行有注解标注的方法
                 }
             }

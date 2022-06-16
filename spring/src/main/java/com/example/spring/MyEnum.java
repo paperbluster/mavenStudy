@@ -8,13 +8,15 @@ import com.example.spring.entity.baseAdapter;
  */
 public enum MyEnum {
 
-    string2map("1","baseAdapter");
+    string2map(Integer.class,StringToInteger.class);
 
-    private String codeName;
-    private String adapterName;
+//    private String codeName;
+//    private String adapterName;
+    private Class<?> type;
+    private Class<StringToInteger> abstractType;
 
-    MyEnum(String codeName,String adapterName) {
-        this.codeName = codeName;
-        this.adapterName=adapterName;
+    MyEnum(Class<?> type, Class<StringToInteger> abstractType) {
+        this.type=type;
+        this.abstractType= abstractType;
     }
 }
