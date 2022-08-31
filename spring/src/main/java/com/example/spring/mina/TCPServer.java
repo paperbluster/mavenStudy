@@ -20,12 +20,13 @@ import java.nio.charset.Charset;
  */
 @Component
 public class TCPServer {
-    public static final Logger logger= LoggerFactory.getLogger(TCPServer.class);
+    public static final Logger logger = LoggerFactory.getLogger(TCPServer.class);
+
     public void main() throws IOException {
         IoAcceptor acceptor = new NioSocketAcceptor();
         acceptor.getSessionConfig().setReadBufferSize(2048);
         // 空闲时间10s
-        acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
+        acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 15);
 
         // 编写过滤器
         acceptor.getFilterChain().addLast("codec",

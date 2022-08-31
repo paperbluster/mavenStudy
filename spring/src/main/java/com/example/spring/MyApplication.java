@@ -20,10 +20,10 @@ public class MyApplication {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
-        UserService userService=context.getBean(UserService.class);
+        //UserService userService=context.getBean(UserService.class);
         //从spring容器里取出CRUD对象进行SQL操作
         //userService.Test();
-        System.out.print("result:"+userService.Find()+"\n");
+       // System.out.print("result:"+userService.Find()+"\n");
         //从spring容器里取出线程池对象进行多线程操作
         //testThreadPoolTaskExecutor tt=context.getBean(testThreadPoolTaskExecutor.class);
         //tt.test();
