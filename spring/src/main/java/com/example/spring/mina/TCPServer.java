@@ -30,8 +30,7 @@ public class TCPServer {
         // 编写过滤器
         acceptor.getFilterChain().addLast("codec",
                 new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"),
-                        LineDelimiter.WINDOWS.getValue(),
-                        LineDelimiter.WINDOWS.getValue()))
+                        LineDelimiter.DEFAULT.getValue(), LineDelimiter.DEFAULT.getValue()))
         );
 
         //设置handler

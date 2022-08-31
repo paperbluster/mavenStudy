@@ -13,13 +13,20 @@ import java.net.InetSocketAddress;
 public class TCPServerHandler extends IoHandlerAdapter {
     /** 客户端预定的心跳包内容 */
     private static final String HEART_BEAT_REQUEST = "客户端心跳包";
+    int i=0,j=0;
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         System.out.println("来自客户端的消息: " + message.toString());
         if(message.equals(HEART_BEAT_REQUEST)){
             session.write("客户端!我收到了你的心跳包");
         }else {
-            session.write("客户端!我收到了你的消息");
+            if(session.isActive()&&i++==0){
+                session.write("客户端!你的事务已经创建了");
+            }else if(session.isConnected()&&j++==0){
+                session.write("客户端!你的事务已经连接过来了");
+            }else{
+                session.write("客户端!我收到了你的消息");
+            }
         }
     }
 
