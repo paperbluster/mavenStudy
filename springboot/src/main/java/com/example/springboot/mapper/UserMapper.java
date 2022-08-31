@@ -2,7 +2,6 @@ package com.example.springboot.mapper;
 
 import com.example.springboot.entity.Client;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

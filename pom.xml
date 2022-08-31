@@ -13,6 +13,7 @@
         <module>mavenWeb</module>
         <module>spring</module>
         <module>springXml</module>
+        <module>jdbc</module>
     </modules>
 
     <properties>
