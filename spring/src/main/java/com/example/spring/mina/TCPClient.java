@@ -37,7 +37,7 @@ public class TCPClient {
         heartBeat.setRequestTimeout(30);
         connector.getFilterChain().addLast("heart beat", heartBeat);
 
-        connector.setHandler(new TCPClientHandler("你好！\r\n 大家好！"));
+        connector.setHandler(new TCPClientHandler("你好！服务器，我是客户端，我开启了和你的事务"));
         ConnectFuture connectFuture=null;
         try {
             connectFuture=connector.connect(new InetSocketAddress("localhost", 9124));
@@ -47,7 +47,7 @@ public class TCPClient {
         }
         if(connectFuture!=null){
             IoSession session=connectFuture.getSession();
-            session.write("hi,i am client!");
+            session.write("服务器!你收到我的事务连接了吗？");
         }
 
     }

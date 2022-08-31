@@ -8,6 +8,8 @@ import org.apache.mina.filter.keepalive.KeepAliveMessageFactory;
  * @create 2022-08-31 23:32
  */
 public class HeartbeatFactory implements KeepAliveMessageFactory {
+    /** 心跳包内容 */
+    private static final String HEART_BEAT_REQUEST = "客户端心跳包";
 
     /***
      * 判断是否是心跳请求
@@ -17,7 +19,7 @@ public class HeartbeatFactory implements KeepAliveMessageFactory {
      */
     @Override
     public boolean isRequest(IoSession session, Object message) {
-        return message.equals("客户端心跳包");
+        return message.equals(HEART_BEAT_REQUEST);
         //return false;
     }
 
@@ -35,7 +37,7 @@ public class HeartbeatFactory implements KeepAliveMessageFactory {
     @Override
     public Object getRequest(IoSession session) {
         // 客户端心跳包发送数据
-        session.write("客户端心跳包");
+        session.write(HEART_BEAT_REQUEST);
         return null;
     }
 

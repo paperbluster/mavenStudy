@@ -11,10 +11,16 @@ import java.net.InetSocketAddress;
  * @create 2022-08-31 23:07
  */
 public class TCPServerHandler extends IoHandlerAdapter {
+    /** 客户端预定的心跳包内容 */
+    private static final String HEART_BEAT_REQUEST = "客户端心跳包";
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        System.out.println("message received from client: " + message.toString());
-        session.write("got it,i am server!");
+        System.out.println("来自客户端的消息: " + message.toString());
+        if(message.equals(HEART_BEAT_REQUEST)){
+            session.write("客户端!我收到了你的心跳包");
+        }else {
+            session.write("客户端!我收到了你的消息");
+        }
     }
 
     @Override

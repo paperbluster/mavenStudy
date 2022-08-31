@@ -22,6 +22,6 @@ public class TCPClientHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception{
         super.messageReceived(session,message);
-        System.out.println("client received meg:"+message);
+        System.out.println("来自服务器的消息:"+message);
     }
 }
