@@ -2,11 +2,10 @@ package com.example.spring;
 
 import com.example.spring.mina.TCPServer;
 import com.example.spring.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.spring.xstream.BeanService;
+import com.example.spring.xstream.ConfigCache;
+import com.example.spring.xstream.Xml2FileManager;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -27,8 +26,16 @@ public class MyApplication {
         //从spring容器里取出线程池对象进行多线程操作
         //testThreadPoolTaskExecutor tt=context.getBean(testThreadPoolTaskExecutor.class);
         //tt.test();
-        TCPServer tcpServer=context.getBean(TCPServer.class);
-        tcpServer.main();
+        //TCPServer tcpServer=context.getBean(TCPServer.class);
+        //tcpServer.main();
+        //BeanService bb= BeanService.getInstance();
+        /**
+         * XML配置表加载到缓存
+         */
+        ConfigCache configCache=context.getBean(ConfigCache.class);
+        configCache.init();
+        Xml2FileManager xml2FileManager=context.getBean(Xml2FileManager.class);
+        xml2FileManager.save();
     }
 
 }
