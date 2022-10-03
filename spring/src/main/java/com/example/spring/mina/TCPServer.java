@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
  */
 @Component
 public class TCPServer {
+
     public static final Logger logger = LoggerFactory.getLogger(TCPServer.class);
 
     public void main() throws IOException {

@@ -28,6 +28,8 @@ public class TCPClient {
 
     public static void main(String[] args) {
         IoConnector connector = new NioSocketConnector();
+        //设置iosession的read()方法为可用(同步传输才使用这个配置)
+        connector.getSessionConfig().setUseReadOperation(true);
         // 尝试连接服务器失效时间30s
         //connector.setConnectTimeoutMillis(30000);
         connector.getFilterChain().addLast("codec",
@@ -44,7 +46,7 @@ public class TCPClient {
         // 心跳检测超时时间30s
         heartBeat.setRequestTimeout(15);
         connector.getFilterChain().addLast("heart beat", heartBeat);
-
+        //开启同步后也可以不设置这个，会自动转载一个默认的
         connector.setHandler(new TCPClientHandler("你好！服务器，我是客户端，我开启了和你的事务"));
         // 监听服务器中途断开
         connector.addListener(new IoServiceListener() {

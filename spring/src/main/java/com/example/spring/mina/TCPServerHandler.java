@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class TCPServerHandler extends IoHandlerAdapter {
     public static final Logger logger = LoggerFactory.getLogger(TCPServerHandler.class);
-    private static ConcurrentHashMap<Long, DelaySession> DelaySessionMap = new ConcurrentHashMap<>();
+    //private static ConcurrentHashMap<Long, DelaySession> DelaySessionMap = new ConcurrentHashMap<>();
     /**
      * 客户端预定的心跳包内容
      */
@@ -45,8 +45,8 @@ public class TCPServerHandler extends IoHandlerAdapter {
         super.sessionCreated(session);
         InetSocketAddress remoteAddress = (InetSocketAddress) session.getRemoteAddress();
         String clientIp = remoteAddress.getAddress().getHostAddress();
-        System.out.println("session created with IP: " + clientIp + "\n");
-        DelaySessionMap.remove(session.getId());
+        logger.info("session created with IP: " + clientIp);
+        //DelaySessionMap.remove(session.getId());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TCPServerHandler extends IoHandlerAdapter {
         String clientIp = remoteAddress.getAddress().getHostAddress();
         System.out.println("session opened with IP: " + clientIp);
         SessionManager.getManager().add(session);
-        DelaySessionMap.remove(session.getId());
+        //DelaySessionMap.remove(session.getId());
     }
 
     @Override
@@ -69,29 +69,29 @@ public class TCPServerHandler extends IoHandlerAdapter {
 //            }
 //            long ioTime = System.currentTimeMillis() - session.getLastIoTime();
 //            if(ioTime>30000){
-//                SessionManager.getManager().remove(session);
+                SessionManager.getManager().remove(session);
 //                System.out.println("服务器移除客户端事务");
 //                break;
 //            }
 //        }
-        DelaySession delaySession = new DelaySession(System.currentTimeMillis(), session);
-        DelaySessionMap.put(session.getId(), delaySession);
+//        DelaySession delaySession = new DelaySession(System.currentTimeMillis(), session);
+//        DelaySessionMap.put(session.getId(), delaySession);
     }
 
     /**
      * 每30秒删除过期事务连接
      */
-    @Scheduled(cron="0 0/300 * * * ?")
-    private void removeExpiredSession() {
-        logger.info("定时清除过期延时事务");
-        long now = System.currentTimeMillis();
-        for (Map.Entry<Long, DelaySession> entry : DelaySessionMap.entrySet()) {
-            if (entry.getKey() + 30000 < now) {
-                SessionManager.getManager().remove(entry.getValue().getSession());
-                DelaySessionMap.remove(entry.getKey());
-            }
-        }
-    }
+//    @Scheduled(cron="0 0/300 * * * ?")
+//    private void removeExpiredSession() {
+//        logger.info("定时清除过期延时事务");
+//        long now = System.currentTimeMillis();
+//        for (Map.Entry<Long, DelaySession> entry : DelaySessionMap.entrySet()) {
+//            if (entry.getKey() + 30000 < now) {
+//                SessionManager.getManager().remove(entry.getValue().getSession());
+//                DelaySessionMap.remove(entry.getKey());
+//            }
+//        }
+//    }
 
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) {
@@ -107,30 +107,30 @@ public class TCPServerHandler extends IoHandlerAdapter {
 //        SessionManager.getManager().remove(session);
     }
 
-    public class DelaySession {
-        private long expire;
-        private IoSession session;
-
-        public DelaySession(long expire, IoSession session) {
-            this.expire = expire;
-            this.session = session;
-        }
-
-        public long getExpire() {
-            return expire;
-        }
-
-        public void setExpire(long expire) {
-            this.expire = expire;
-        }
-
-        public IoSession getSession() {
-            return session;
-        }
-
-        public void setSession(IoSession session) {
-            this.session = session;
-        }
-    }
+//    public class DelaySession {
+//        private long expire;
+//        private IoSession session;
+//
+//        public DelaySession(long expire, IoSession session) {
+//            this.expire = expire;
+//            this.session = session;
+//        }
+//
+//        public long getExpire() {
+//            return expire;
+//        }
+//
+//        public void setExpire(long expire) {
+//            this.expire = expire;
+//        }
+//
+//        public IoSession getSession() {
+//            return session;
+//        }
+//
+//        public void setSession(IoSession session) {
+//            this.session = session;
+//        }
+//    }
 
 }
