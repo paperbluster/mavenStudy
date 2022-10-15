@@ -8,5 +8,5 @@ import org.apache.mina.core.session.IoSession;
  * @create 2022-09-15 7:55
  */
 public interface Invoker {
-    //WriteFuture invoke(final IoSession session,)
+    WriteFuture invoke(final IoSession session,Request request,Response response);
 }
